@@ -8,12 +8,19 @@
 /app/spool/*
 
 # Cache, session files and logs (Symfony3)
+/var/*
+!/var/cache
+!/var/logs
+!/var/sessions
 /var/cache/*
 /var/logs/*
 /var/sessions/*
 !var/cache/.gitkeep
 !var/logs/.gitkeep
 !var/sessions/.gitkeep
+
+
+
 
 # Parameters
 /app/config/parameters.yml
@@ -46,3 +53,9 @@
 
 # Backup entities generated with doctrine:generate:entities command
 */Entity/*~
+
+
+
+
+!var/SymfonyRequirements.php
+
