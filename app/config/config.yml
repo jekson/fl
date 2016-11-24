@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -66,3 +66,36 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    registration:
+        form:
+            type: AppBundle\Form\RegistrationType
+        confirmation:
+            enabled: false
+    from_email:
+        address: info@fl.my
+        sender_name: Fl
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: '%kernel.debug%'
+    bundles:        [AppBundle]
+    #java: /usr/bin/java
+    filters:
+        cssrewrite: ~
+        uglifyjs2:
+                    bin: app/Resources/node_modules/uglify-js/bin/uglifyjs
+        uglifycss:
+                    bin: app/Resources/node_modules/uglifycss/uglifycss
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # Enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:  [admin]
+sonata_admin:
+    title:                fl
+    
