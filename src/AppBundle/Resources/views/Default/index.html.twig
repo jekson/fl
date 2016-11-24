@@ -1,0 +1,20 @@
+{% extends "AppBundle:Default:base.html.twig" %}
+{% block body %}
+    <div id="main">
+        <div id="form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2>Header really big header</h2>
+                        <div id="formblock282" class="ccm-block-type-form">
+                        <a href="{{path('fos_user_registration_register')}}">Register</a><br>
+                        <a href="{{path('fos_user_security_login')}}">login</a><br>
+                        <a href="{{path('sonata_admin_dashboard')}}">admin</a>
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+<div id="form">
+    <div class="container">
+        <div class="row">
+            <div class="steps col-md-8">
+                <ul>
+                    <li class="active"><span><strong>1.</strong>Open<br>Account</span></li>
+                    <li><span><strong>2.</strong>Complete your<br>Account</span></li>
+                    <li><span><strong>3.</strong>Verify Your<br>Account</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                {% include "AppBundle:Registration:register_content.html.twig" %}
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock fos_user_content %}
+

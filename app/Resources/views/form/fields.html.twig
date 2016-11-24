@@ -1,0 +1,31 @@
+{% block form_row %}
+{% spaceless %}
+    <div class="form-group field ">
+        {{ form_label(form) }}
+        {% if form_errors(form) %}
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                {{ form_errors(form) }}
+            </div>
+        {% endif %}
+        {{ form_widget(form, { 'attr': {'class': 'form-control'} }) }}
+        
+    </div>
+{% endspaceless %}
+{% endblock form_row %}
+{%- block choice_widget_expanded -%}
+    <div class="checkboxList">
+    {%- for child in form %}
+        {% set class='checkbox' %}
+        {% if (not multiple) %}
+            {% set class = 'radio' %}
+        {% endif %}
+        <div class="{{ class }}">
+            <label>
+                {{- form_widget(child) -}}
+                <span>{{child.vars.label}}</span>
+            </label>
+        </div>
+    {% endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}

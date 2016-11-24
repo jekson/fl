@@ -1,0 +1,49 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+{% form_theme form 'form/fields.html.twig' %}
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    <div class="step1">
+        <h2>{% trans %}PERSONAL DETAILS{% endtrans %}</h2>
+        {{ form_row(form.title) }}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.firstName) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.lastName) }}
+            </div>
+        </div>
+        {{ form_row(form.country) }}
+        {{ form_row(form.phone) }}
+        {{ form_row(form.dateOfBirth) }}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.placeOfBirth) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.countryOfNationality) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.passportIssueDate) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.passportExpiryDate) }}
+            </div>
+        </div>
+        {{ form_row(form.taxResidency) }}
+        {{ form_row(form.isUsaTax) }}
+    </div>
+    <div class="step2">
+        <h2>{% trans %}DIRECT LOGIN DETAILS{% endtrans %}</h2>
+        {{ form_row(form.email) }}
+        {{ form_widget(form) }}
+    </div>
+
+
+    <div class="button_holder">
+        <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}

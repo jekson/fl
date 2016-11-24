@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{%block title %}{% endblock %}fl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  {% include "AppBundle:Components:stylesheets.html.twig" %}
+
+  {%block stylesheets %}{%endblock%}
+
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+    <header id="header" class="header"> 
+        <div class="header-wrapper">
+            <div class="ha-header-main container">
+                <div class="row">
+                    <div id="logo" class="col-xs-6 col-md-3">
+                        <a href="{{ path('homepage') }}">
+                            <img src="{{ asset("site/img/Estock_Logo.png") }}" alt="logo" class="ccm-image-block img-responsive bID-72" title="Estock">
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block body %}{% endblock %}
+
+    <footer id="site-footer">
+    </footer>
+
+    {% block javascripts %}{% endblock %}
+</body>
+</html>
