@@ -87,9 +87,9 @@ assetic:
     filters:
         cssrewrite: ~
         uglifyjs2:
-                    bin: app/Resources/node_modules/uglify-js/bin/uglifyjs
+                    bin: ./app/Resources/node_modules/uglify-js/bin/uglifyjs
         uglifycss:
-                    bin: app/Resources/node_modules/uglifycss/uglifycss
+                    bin: ./app/Resources/node_modules/uglifycss/uglifycss
 sonata_block:
     default_contexts: [cms]
     blocks:

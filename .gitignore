@@ -59,5 +59,4 @@
 
 !var/SymfonyRequirements.php
 
-web/js/*
-web/css/*
+web/site/compiled/*

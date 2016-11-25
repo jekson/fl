@@ -1,0 +1,1 @@
+function aaaa(){    alert('aaaa');}
