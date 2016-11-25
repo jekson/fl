@@ -1,6 +1,6 @@
 {% stylesheets  
                 'site/fonts/font-awesome/css/font-awesome.css'
                 'site/css/main.css'
-                  filter='cssrewrite' %}
+                filter='?uglifycss' filter='cssrewrite' output="site/compiled/css/site.min.css" %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet">
 {% endstylesheets %}
