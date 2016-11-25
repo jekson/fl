@@ -1,0 +1,30 @@
+{% extends "AppBundle:Default:base.html.twig" %}
+
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block leftmenu %}
+<div class="sidebar">
+    <div class="block ui_block">
+        <ul class="ui">
+            <li class="title">Все категории <span class="num">1</span></li>
+            <li><a href="#">Администрирование сайтов</a><span class="num">223</span></li>
+            <li><a href="#">Архитектура и Инжиниринг</a><span class="num">31</span></li>
+            <li><a href="#">Аудио, Видео и Мультимедиа</a><span class="num">463</span></li>
+            <li><a href="#">Веб-дизайн и Интерфейсы</a><span class="num">1235</span></li>
+            <li><a href="#">Веб-программирование и Сайты</a><span class="num">6456</span></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+{% block body %}
+<div class="content">
+    <div class="jobs_list">
+        {% for job in jobs %}
+            {% include 'AppBundle:Job:job.html.twig' with {'job': job} %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

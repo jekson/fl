@@ -57,9 +57,14 @@ class User extends BaseUser
      */
     protected $phone;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Job", mappedBy="user")
+     */
+    private $jobs;
+
     public function __construct()
     {
-        parent::__construct();
+        $this->jobs = new ArrayCollection();
     }
 
     /**
@@ -248,5 +253,41 @@ class User extends BaseUser
     public function getPhone()
     {
         return $this->phone;
+    }
+
+
+    /**
+     * Add Jobs
+     *
+     * @param \AppBundle\Entity\Job $jobs
+     * @return App
+     */
+    public function addJobs(\AppBundle\Entity\Job $jobs)
+    {
+        $this->jobs[] = $jobs;
+
+        $jobs->setUser($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove jobs
+     *
+     * @param \AppBundle\Entity\Job $jobs
+     */
+    public function removeJob(\AppBundle\Entity\Job $jobs)
+    {
+        $this->jobs->removeElement($jobs);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
     }
 }

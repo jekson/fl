@@ -1,10 +1,15 @@
+@font-face {
+    font-family: PTSans;
+    src: url(../fonts/PTSans.woff);
+}
+
 html, body{
     min-height: 100%;
 }
 body{
     background: #f5f8fa;
     margin: 0px;
-    font-family: PT Sans, Arial;
+    font-family: PTSans, Arial;
     font-size: 16px;
 }
 a:link, a:visited{
@@ -146,16 +151,19 @@ ul.sidebar_menu li a.logo{
     
 }
 
-.order{
+.job{
     
 }
-.order .title{
+.job .title{
     padding-bottom: 10px;
 }
-.order .title h3{
+.job .title h3{
     line-height: 36px;
+    max-width: 500px;
+    display: inline-block;
+    white-space: nowrap;
 }
-.order .title .price{
+.job .title .price{
     display: inline-block;
     background: #6897bb;
     padding: 10px 15px;
@@ -166,14 +174,14 @@ ul.sidebar_menu li a.logo{
     border-radius: 4px;
     cursor: pointer;
 }
-.order .tags{
+.job .tags{
     margin-top: 10px;
     color: #999;
 }
-.order .tags .tag{
+.job .tags .tag{
     margin-right: 10px;
 }
-.order .tags .tag .icon{
+.job .tags .tag .icon{
     display: inline-block;
     margin-right: 5px;
     border: 2px solid #ccc;
