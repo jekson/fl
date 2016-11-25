@@ -1,29 +1,19 @@
-<div class="block job">
-    <div class="title">
-        <h3><a href="#">{{ job.title }}</a></h3>
-        <div class="price">{{ job.price }}$ в час</div>
-    </div>
-    <div class="description">
-    {{ job.getShortDescription }}
-    </div>
-    <div class="tags">
-        <span class="tag">
-            <div class="icon"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></div>
-            {{ job.category.name }}
-        </span>
-        <span class="tag">
-            <div class="icon"><i class="fa fa-comment fa-lg" aria-hidden="true"></i></div>
-            0
-        </span>
-        <span class="tag">
-            <div class="icon"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i></div>
-            <abbr class="timeago" title="{{ job.created.date|date("Y-m-d H:i:s") }}"></abbr>
-        </span>
-        {% if job.isOnlyPro %}
-        <span class="tag">
-            <div class="icon"><i class="fa fa-exclamation fa-lg" aria-hidden="true"></i></div>
-            Только для <a href="#"><b>PRO</b></a>
-        </span>
-        {% endif %}
+{% extends "AppBundle:Default:base.html.twig" %}
+
+{% block title %}Работа{% endblock %}
+
+{% block leftmenu %}
+<div class="sidebar">
+    <div class="block">
+        
     </div>
 </div>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="block job">
+        {{ dump(job.title) }}
+    </div>
+</div>
+{% endblock %}

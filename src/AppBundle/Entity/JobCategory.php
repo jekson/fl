@@ -50,6 +50,11 @@ class JobCategory
     private $description;
 
     /**
+     * @ORM\OneToMany(targetEntity="JobCategory", mappedBy="parent")
+     */
+    private $children;
+
+    /**
      * @ORM\OneToMany(targetEntity="Job", mappedBy="category")
      */
     private $jobs;
@@ -57,6 +62,7 @@ class JobCategory
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
+        $this->children = new ArrayCollection();
     }
 
     /**
@@ -115,28 +121,28 @@ class JobCategory
         return $this->description;
     }
 
-    
+
     /**
-     * Set parentId
+     * Set url
      *
-     * @param integer $parentId
+     * @param string $url
      * @return JobType
      */
-    public function setParentId($parentId)
+    public function setUrl($url)
     {
-        $this->parentId = $parentId;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get parentId
+     * Get url
      *
      * @return string
      */
-    public function getParentId()
+    public function getUrl()
     {
-        return $this->parentId;
+        return $this->url;
     }
 
 
@@ -173,5 +179,26 @@ class JobCategory
     public function getJobs()
     {
         return $this->jobs;
+    }
+
+
+
+    public function getParent() {
+        return $this->parent;
+    }
+
+    public function getChildren() {
+        return $this->children;
+    }
+
+    // always use this to setup a new parent/child relationship
+    public function addChildren(\AppBundle\Entity\JobCategory $child) {
+        var_dump($child);
+       $this->children[] = $child;
+       $child->setParent($this);
+    }
+
+    public function setParent(\AppBundle\Entity\JobCategory $parent) {
+       $this->parent = $parent;
     }
 }

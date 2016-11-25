@@ -175,6 +175,10 @@ ul.sidebar_menu li a.logo{
 .job .title .price:hover{
     background: #38678a;
 }
+.job .description{
+    cursor: pointer;
+}
+
 .job .tags{
     margin-top: 10px;
     color: #999;

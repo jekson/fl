@@ -11,8 +11,7 @@
         <ul class="ui">
             <li class="title">Все категории <span class="num">1</span></li>
             {% for category in categoryes %}
-                {{ dump(category.jobs|length) }}
-                <li><a href="#">{{ category.name }}</a><span class="num">{{ category.name }}</span></li>
+                <li><a href="#">{{ category.name }}</a><span class="num">1</span></li>
             {% endfor %}
         </ul>
     </div>
@@ -22,7 +21,7 @@
 <div class="content">
     <div class="jobs_list">
         {% for job in jobs %}
-            {% include 'AppBundle:Job:job.html.twig' with {'job': job} %}
+            {% include 'AppBundle:Job:job_item.html.twig' with {'job': job} %}
         {% endfor %}
     </div>
 </div>
