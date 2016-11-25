@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>{%block title %}{% endblock %}fl</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>{%block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  {% include "AppBundle:Components:stylesheets.html.twig" %}
+    {% include "AppBundle:Components:stylesheets.html.twig" %}
 
-  {%block stylesheets %}{%endblock%}
-
+    {%block stylesheets %}{%endblock%}
 </head>
-<body class="{% block bodyclass %}{% endblock %}">
-    <header id="header" class="header"> 
-        <div class="header-wrapper">
-            <div class="ha-header-main container">
-                <div class="row">
-                    <div id="logo" class="col-xs-6 col-md-3">
-                        <a href="{{ path('homepage') }}">
-                            <img src="{{ asset("site/img/Estock_Logo.png") }}" alt="logo" class="ccm-image-block img-responsive bID-72" title="Estock">
-                        </a>
-                    </div>
-                    
+<body>
+    <div class="main_sidebar">
+        <ul class="sidebar_menu">
+            <li><a href="#" class="logo"><img src="http://slto.ru/views/Social/images/logo.png" alt=""></a></li>
+            <li><a href="#"><i class="fa fa-home fa-lg fa-fw"></i></a></li>
+            <li><a href="#"><i class="fa fa-gavel fa-lg fa-fw"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope fa-lg fa-fw"></i></a></li>
+            <li><a href="#"><i class="fa fa-bell fa-lg fa-fw"></i></a></li>
+            <li><a href="#"><img src="http://slto.ru/user_files/avatars/1.png" alt=""></a></li>
+            <li><a href="#"><i class="fa fa-sign-out fa-lg fa-fw"></i></a></li>
+        </ul>
+    </div>
+    <div class="main_container">
+        <div class="block page_header">
+            <div class="wrap">
+                <div class="info">
+                    <h2>{{ app.request.get('_route') }}</h2>
+                    <div class="breadcrumbs"><a href="#">Работа</a> > <a href="#">Администрирование сайтов</a></div>
                 </div>
+                <button class="button big_button fl_r">Опубликовать задание</button>
             </div>
         </div>
-    </header>
-
-    {% block body %}{% endblock %}
-
-    <footer id="site-footer">
-    </footer>
-
+        <div class="wrap">
+            
+            {% block body %}{% endblock %}
+            
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    
     {% block javascripts %}{% endblock %}
+    
 </body>
 </html>
