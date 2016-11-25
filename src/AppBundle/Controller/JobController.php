@@ -19,8 +19,11 @@ class JobController extends Controller
 
         $jobs = $db->getRepository('AppBundle:Job')->findAll();
 
+        $categoryes = $db->getRepository('AppBundle:JobCategory')->findByParent(1);
+
         return $this->render('AppBundle:Job:jobs.html.twig', array(
             'jobs' => $jobs,
+            'categoryes' => $categoryes,
         ));
     }
 

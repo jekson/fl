@@ -21,11 +21,12 @@ class JobCategory
     protected $id;
 
     /**
-     * @var parent_id
-     * @ORM\Column(type="integer")
+     * @var parent
      *
+     * @ORM\ManyToOne(targetEntity="JobCategory")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
-    private $parent_id;
+    private $parent;
 
     /**
      * @var url
@@ -49,7 +50,7 @@ class JobCategory
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="Job", mappedBy="type")
+     * @ORM\OneToMany(targetEntity="Job", mappedBy="category")
      */
     private $jobs;
 
@@ -114,4 +115,63 @@ class JobCategory
         return $this->description;
     }
 
+    
+    /**
+     * Set parentId
+     *
+     * @param integer $parentId
+     * @return JobType
+     */
+    public function setParentId($parentId)
+    {
+        $this->parentId = $parentId;
+
+        return $this;
+    }
+
+    /**
+     * Get parentId
+     *
+     * @return string
+     */
+    public function getParentId()
+    {
+        return $this->parentId;
+    }
+
+
+    /**
+     * Add Jobs
+     *
+     * @param \AppBundle\Entity\Job $jobs
+     * @return App
+     */
+    public function addJobs(\AppBundle\Entity\Job $jobs)
+    {
+        $this->jobs[] = $jobs;
+
+        $jobs->setCategory($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove jobs
+     *
+     * @param \AppBundle\Entity\Job $jobs
+     */
+    public function removeJob(\AppBundle\Entity\Job $jobs)
+    {
+        $this->jobs->removeElement($jobs);
+    }
+
+    /**
+     * Get jobs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
+    }
 }

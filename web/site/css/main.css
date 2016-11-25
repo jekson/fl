@@ -181,20 +181,23 @@ ul.sidebar_menu li a.logo{
 }
 .job .tags .tag{
     margin-right: 10px;
+    line-height: 27px;
 }
 .job .tags .tag .icon{
+    box-sizing: border-box;
     display: inline-block;
-    margin-right: 5px;
+    margin-right: 3px;
     border: 2px solid #ccc;
     width: 27px;
     height: 27px;
     text-align: center;
-    line-height: 27px;
+    line-height: 20px;
+    vertical-align: top;
     border-radius: 50px;
-    font-size: 13px;
+    font-size: 10px;
     font-weight: bold;
 }
-
+.job .tags .tag .icon .fa-bars{line-height: 22px;}
 .button{
     padding: 10px 15px;
     background: #6897bb;

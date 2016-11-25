@@ -1,4 +1,3 @@
-alert(123);
-JQuery(function(){
+jQuery(function(){
     $("abbr.timeago").timeago();
 })
