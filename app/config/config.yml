@@ -98,4 +98,6 @@ sonata_block:
             contexts:  [admin]
 sonata_admin:
     title:                fl
+    templates:
+        user_block: AdminBundle::user_block.html.twig
     

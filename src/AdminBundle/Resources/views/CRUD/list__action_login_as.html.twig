@@ -1,0 +1,7 @@
+{% if admin.hasRoute('login_as') %}
+    {% if object.id != admin.getAdminId() %}
+        <a href="{{ admin.generateObjectUrl('login_as', object) }}" target="_blank" class="btn btn-sm btn-info" title="{% trans %}Login under account{% endtrans %}">
+            <i class="glyphicon glyphicon-user"></i> {% trans %}Sign In{% endtrans %}
+        </a>
+    {% endif %}
+{% endif %}

@@ -1,0 +1,87 @@
+{% extends "AppBundle:Default:base.html.twig" %}
+{% block body %}
+<!-- Start Building Section -->
+<section class="start-building container-fluid">
+	<h1>Become an <span>APP</span> superhero</h1>
+	<p>custom app | mobile site | marketing</p>
+	<a href="{{ path('easy_app_editor_homepage') }}" id="btn-start-building">Start Building For Free!</a>
+</section><!-- END: Start Building Section -->
+
+
+
+<!-- Info Section -->
+
+<section class="info container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<h1>
+					<img src="/site/img/main-logo-sm.png" alt="Small Main Logo" class="header-icon">
+					<span class="blue-span">Easy</span><span class="green-span">App</span>Design
+				</h1>
+				<p>Design, Customize, and Create your own App in minutes.  This is the easiest and by far the coolest way to have your own App. Whether you want to sell products, promote your music or build your business into a global powerhouse, this is the place.</p>
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				<h1><img src="/site/img/iac-logo-sm.png" alt="Small IAC Logo" class="header-icon">The IAC</h1>
+				<p>The Instant App Creator is the fastest and easiest way to create an App. If you have a website compatible with The IAC, you can create your App Instantly.</p> <p><span style="text-transform: uppercase; color: #006699; text-align: right;">COMING SOON!</span></p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<h1><img src="/site/img/mobile-site.png" alt="Mobile Website Icon" class="header-icon">Mobile Websites</h1>
+				<p>Why try to solve the debate between what is better? Do you need an App or Mobile Website? With the click of a button turn your App into a mobile Website and have the best of both worlds!</p>
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				<h1><img src="/site/img/marketing.png" alt="Marketing Icon" class="header-icon">Marketing</h1>
+				<p> You have just made the Greatest App Ever. Now how in the world are you going to get people to it? You need Traffic. Let us Market your App with web banners through Google Advertising! Our team of sidekicks are approved resellers of Google Apps and Marketing.</p>
+			</div>
+		</div>
+
+
+	</div>
+</section>
+
+<!-- GETTING STARTED Section -->
+
+<section class="start container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<h1>Getting Started</h1>
+				<p>Building an app is made easy for you with our Easy App Editor!</p>
+				<a href="{{ path('easy_app_site_faq') }}" id="btn-getting-started">View Helpful Hints</a>
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				<img src="/site/img/mac-editor.png" alt="Mac Editor" class="mac-editor">
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- FOOTER Section -->
+
+<section class="footer container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6">
+				<h1>Contact Us</h1>
+				<p><i class="fa fa-envelope"></i>  <a href="mailto:info@easyappdesign.com">info@easyappdesign.com</a><br><i class="fa fa-phone"></i>  877.398.0111</p>
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				<a href="{{ path('easy_app_site_homepage') }}"><img src="/site/img/header-logo.png" alt="Footer Logo" class="footer-logo"></a>
+			</div>
+		</div>
+		 <div class="row">
+                <div class="col-xs-6 col-sm-6 designer">
+                    <p>© 2014 <a href="http://www.easyappdesign.com">EasyAPP Design</a> | All Rights Reserved</p>
+                </div>
+                <div class="col-xs-6 col-sm-6 text-right designer">
+                    <a href="{{ path('easy_app_site_terms') }}">Terms &amp; Conditions</a>
+                </div>
+            </div>
+	</div>
+</section>
+
+
+{% endblock %}

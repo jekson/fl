@@ -1,0 +1,12 @@
+parameters:
+#    app_site.example.class: AdminBundle\Example
+
+services:
+    app.admin.admin.user:
+        class: AdminBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Administration, label: Users }
+        arguments: [null, AppBundle\Entity\User, SonataAdminBundle:CRUD]
+#        calls:
+#            - [ setTranslationDomain, [AdminBundle]]
+#            - [ setSecurityTokenStorage , ["@security.token_storage"]]
