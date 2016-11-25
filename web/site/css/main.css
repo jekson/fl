@@ -1,6 +1,6 @@
 @font-face {
     font-family: PTSans;
-    src: url(../fonts/PTSans.woff);
+    src: url(../fonts/PTSans.ttf);
 }
 
 html, body{
@@ -141,11 +141,9 @@ ul.sidebar_menu li a.logo{
 }
 .ui_block ul.ui li.title{
     font-weight: bold;
-    padding: 0px 15px;
 }
 .ui_block ul.ui li a{
     line-height: 1.6em;
-    padding: 0px 15px;
 }
 .ui_block ul.ui li a:hover{
     
@@ -173,6 +171,9 @@ ul.sidebar_menu li a.logo{
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
+}
+.job .title .price:hover{
+    background: #38678a;
 }
 .job .tags{
     margin-top: 10px;
