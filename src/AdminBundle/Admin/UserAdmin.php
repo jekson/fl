@@ -25,7 +25,7 @@ class UserAdmin extends Admin
 
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('login_as', "../../../login-as/" . $this->getRouterIdParameter());
+        $collection->add('login_as', "../../login-as/" . $this->getRouterIdParameter());
     }
 
     /**
@@ -104,20 +104,20 @@ class UserAdmin extends Admin
      */
     public function preUpdate($object)
     {
-        //$this->changePassword($object);
+        $this->changePassword($object);
     }
     /**
      * @param User $account
      */
     private function changePassword(User $account)
-    {        /*
+    {
         $form = $this->getForm();
         if ($form['plainPassword']->getData()) {
             $encoder = new MessageDigestPasswordEncoder('sha512', true, 10);
             $password = $encoder->encodePassword($form['plainPassword']->getData(), $account->getSalt());
             $account->setPassword($password);
         }
-        */
+
     }
 
     public function setSecurityTokenStorage(TokenStorage $securityTokenStorage){
