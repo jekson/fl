@@ -8,6 +8,7 @@
     {% include "AppBundle:Components:stylesheets.html.twig" %}
 
     {%block stylesheets %}{%endblock%}
+    {%block head %}{%endblock%}
 </head>
 <body>
     <div class="main_sidebar">
@@ -15,6 +16,7 @@
             <li><a href="#" class="logo"><img src="http://slto.ru/views/Social/images/logo.png" alt=""></a></li>
             <li><a href="#"><i class="fa fa-home fa-lg fa-fw"></i></a></li>
             <li><a href="#"><i class="fa fa-gavel fa-lg fa-fw"></i></a></li>
+            <li><a href="#"><i class="fa fa-users fa-lg fa-fw"></i></a></li>
             <li><a href="#"><i class="fa fa-envelope fa-lg fa-fw"></i></a></li>
             <li><a href="#"><i class="fa fa-bell fa-lg fa-fw"></i></a></li>
             <li><a href="#"><img src="http://slto.ru/user_files/avatars/1.png" alt=""></a></li>
@@ -32,7 +34,7 @@
             </div>
         </div>
         <div class="wrap">
-            
+            {% block leftmenu %}{% endblock %}
             {% block body %}{% endblock %}
             
         </div>

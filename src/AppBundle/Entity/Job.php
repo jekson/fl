@@ -22,16 +22,18 @@ class Job
     protected $id;
 
     /**
-     * @var author_id
-     * @ORM\Column(type="integer")
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="jobs")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $author_id;
+    private $user;
 
     /**
      * @var executor_id
      * @ORM\Column(type="integer")
      */
-    private $executor_id;
+    private $executor;
 
      /**
      * @var title
@@ -189,26 +191,25 @@ class Job
 
 
     /**
-     * Set author_id
+     * Set user
      *
-     * @param integer $author_id
+     * @param AppBundle\Entity\User $user
      * @return Job
      */
-    public function setAuthorId($author_id)
+    public function setUser(AppBundle\Entity\User $user = NULL)
     {
-        $this->author_id = $author_id;
-
+        $this->user = $user;
         return $this;
     }
 
     /**
-     * Get author_id
+     * Get user
      *
-     * @return integer
+     * @return AppBundle\Entity\User
      */
-    public function getAuthorId()
+    public function getUser()
     {
-        return $this->author_id;
+        return $this->user;
     }
 
     /**
