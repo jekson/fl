@@ -13,9 +13,9 @@
 <body>
     <div class="main_sidebar">
         <ul class="sidebar_menu">
-            <li><a href="#" class="logo"><img src="http://slto.ru/views/Social/images/logo.png" alt=""></a></li>
-            <li><a href="#"><i class="fa fa-home fa-lg fa-fw"></i></a></li>
-            <li><a href="#"><i class="fa fa-gavel fa-lg fa-fw"></i></a></li>
+            <li><a href="{{ url('homepage') }}" class="logo"><img src="http://slto.ru/views/Social/images/logo.png" alt=""></a></li>
+            <li><a href="{{ url('homepage') }}"><i class="fa fa-home fa-lg fa-fw"></i></a></li>
+            <li><a href="{{ url('jobs') }}"><i class="fa fa-gavel fa-lg fa-fw"></i></a></li>
             <li><a href="#"><i class="fa fa-users fa-lg fa-fw"></i></a></li>
             <li><a href="#"><i class="fa fa-envelope fa-lg fa-fw"></i></a></li>
             <li><a href="#"><i class="fa fa-bell fa-lg fa-fw"></i></a></li>
@@ -27,7 +27,7 @@
         <div class="block page_header">
             <div class="wrap">
                 <div class="info">
-                    <h2>{{ app.request.get('_route') }}</h2>
+                    <h2>{{ block('title') }}</h2>
                     <div class="breadcrumbs"><a href="#">Работа</a> > <a href="#">Администрирование сайтов</a></div>
                 </div>
                 <button class="button big_button fl_r">Опубликовать задание</button>
@@ -43,6 +43,5 @@
     
     {% include "AppBundle:Components:javascripts.html.twig" %}
     {% block javascripts %}{% endblock %}
-    
 </body>
 </html>

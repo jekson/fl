@@ -9,9 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="jobs_types")
+ * @ORM\Table(name="jobs_categoryes")
  */
-class JobType
+class JobCategory
 {
     /**
      * @ORM\Id
@@ -20,7 +20,21 @@ class JobType
      */
     protected $id;
 
-     /**
+    /**
+     * @var parent_id
+     * @ORM\Column(type="integer")
+     *
+     */
+    private $parent_id;
+
+    /**
+     * @var url
+     * @ORM\Column(type="string", length=100)
+     *
+     */
+    private $url;
+
+    /**
      * @var name
      * @ORM\Column(type="string", length=50)
      *
@@ -34,11 +48,14 @@ class JobType
      */
     private $description;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="Job", mappedBy="type")
+     */
+    private $jobs;
 
     public function __construct()
     {
-        
+        $this->jobs = new ArrayCollection();
     }
 
     /**
@@ -96,6 +113,5 @@ class JobType
     {
         return $this->description;
     }
-
 
 }

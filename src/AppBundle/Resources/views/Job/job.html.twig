@@ -1,27 +1,29 @@
 <div class="block job">
     <div class="title">
         <h3><a href="#">{{ job.title }}</a></h3>
-        <div class="price">{{ job.price }}$</div>
+        <div class="price">{{ job.price }}$ в час</div>
     </div>
     <div class="description">
-    задачи по вордпресу в целом и по woocomerce(перечисляю кратко): 1.максимальная русификация вордпреса и вукомерса и всех их плагинов важных для работы магазина 2.в…
+    {{ job.getShortDescription }}
     </div>
     <div class="tags">
         <span class="tag">
-            <div class="icon"><i class="fa fa-money fa-lg" aria-hidden="true"></i></div>
-            За час
+            <div class="icon"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></div>
+            {{ job.category.name }}
         </span>
         <span class="tag">
             <div class="icon"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></div>
-            Проект
+            {{ job.type.name }}
         </span>
         <span class="tag">
             <div class="icon"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i></div>
-            5 минут назад
+            <abbr class="timeago" title="{{ job.created.date|date("Y-m-d H:i:s") }}"></abbr>
         </span>
+        {% if job.isOnlyPro %}
         <span class="tag">
             <div class="icon"><i class="fa fa-exclamation fa-lg" aria-hidden="true"></i></div>
             Только для <a href="#"><b>PRO</b></a>
         </span>
+        {% endif %}
     </div>
 </div>

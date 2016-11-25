@@ -64,7 +64,9 @@ class Job
 
     /**
      * @var type
-     * @ORM\Column(type="integer")
+     *
+     * @ORM\ManyToOne(targetEntity="JobType")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $type;
 
@@ -80,9 +82,37 @@ class Job
      */
     private $status;
 
+    /**
+     * @var hidden
+     * @ORM\Column(type="boolean")
+     */
+    private $hidden;
+
+    /**
+     * @var onlyPro
+     * @ORM\Column(type="boolean")
+     */
+    private $onlyPro;
+
+    /**
+     * @var pay_type
+     * @ORM\Column(type="integer")
+     */
+    private $pay_type;
+
+    /**
+     * @var category
+     * @ORM\ManyToOne(targetEntity="JobCategory")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
+
     public function __construct()
     {
-        parent::__construct();
+        $this->hidden = 0;
+        $this->pro = 0;
+        $this->pay_type = 1;
+        $this->status = 1;
     }
 
     /**
@@ -145,7 +175,7 @@ class Job
     /**
      * Set text
      *
-     * @param integer $text
+     * @param text $text
      * @return Job
      */
     public function setText($text)
@@ -163,6 +193,10 @@ class Job
     public function getText()
     {
         return $this->text;
+    }
+
+    public function getShortDescription(){
+        return substr($this->text, 0, 210);
     }
 
 
@@ -259,6 +293,34 @@ class Job
         return $this->status;
     }
 
+    /**
+     * Set onlyPro
+     *
+     * @param boolean $onlyPro
+     * @return Job
+     */
+    public function setPro($onlyPro)
+    {
+        $this->onlyPro = $onlyPro;
+
+        return $this;
+    }
+
+    /**
+     * Get onlyPro
+     *
+     * @return boolean
+     */
+    public function getOnlyPro()
+    {
+        return $this->onlyPro;
+    }
+
+    public function isOnlyPro()
+    {
+        return $this->onlyPro;
+    }
+
 
     /**
      * Set created
@@ -282,5 +344,29 @@ class Job
     public function getCreated()
     {
         return $this->created;
+    }
+    
+
+    /**
+     * Set Category
+     *
+     * @param inreger $category
+     * @return Job
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return integer
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

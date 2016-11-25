@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 class JobController extends Controller
 {
     /**
-     * @Route("/jobs", name="jobs")
+     * @Route("/jobs{trailingSlash}{category}", name="jobs", requirements={"category" = "[a-zA-Z\-]+","trailingSlash" = "[/]{0,1}"}, defaults={"category" = "","trailingSlash" = "/"})
      */
-    public function jobsAction()
+    public function jobsAction($category)
     {
         
         $db = $this->getDoctrine()->getManager();

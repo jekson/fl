@@ -1,1 +1,3 @@
-function aaaa(){    alert('aaaa');}
+jQuery(function(){
+    $("abbr.timeago").timeago();
+})
