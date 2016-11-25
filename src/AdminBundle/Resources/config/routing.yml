@@ -1,0 +1,3 @@
+login_as:
+    path: /admin/login-as/{id}
+    defaults: { _controller: AdminBundle:Security:logInAs }

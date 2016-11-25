@@ -1,0 +1,7 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field %}
+    {% if object.icon %}
+        <img src="{{ object.icon.url }}" style="max-width:90px;max-height:90px;" >
+    {% endif %}
+{% endblock %}

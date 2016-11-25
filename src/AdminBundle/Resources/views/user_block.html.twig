@@ -1,0 +1,10 @@
+{% block user_block %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div style="text-align:right; font-weight: bold; padding: 10px;">
+            <p>{{ app.user.username }}</p>
+            <a href="{{ path('fos_user_security_login') }}" class="btn btn-xs btn-default">{% trans %}Logout{% endtrans %}</a>
+        </div>
+    {% else %}
+        Login error
+    {% endif %}
+{% endblock %}
