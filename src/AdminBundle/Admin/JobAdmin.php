@@ -36,7 +36,7 @@ class JobAdmin extends Admin
                     'label' => 'Type',
                     'btn_add' => false
                 ))
-                ->add('price', 'text', array(
+                ->add('price', 'money', array(
                     'label' => 'Price'
                 ))
                 ->add('Text', 'textarea', array(
