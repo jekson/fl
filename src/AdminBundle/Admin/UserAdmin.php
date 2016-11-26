@@ -71,6 +71,8 @@ class UserAdmin extends Admin
     {
         $datagridMapper
             ->add('email')
+            ->add('firstName')
+            ->add('lastName')
         ;
     }
     /**
@@ -82,8 +84,11 @@ class UserAdmin extends Admin
             ->addIdentifier('id', null, array(
                 'label' => 'ID'
             ))
-            ->add('name', null, array(
-                'label' => 'Name'
+            ->add('firstName', null, array(
+                'label' => 'First Name'
+            ))
+            ->add('lastName', null, array(
+                'label' => 'Last Name'
             ))
             ->add('email', null, array(
                 'label' => 'e-mail',

@@ -24,7 +24,7 @@ class Job
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="jobs")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="jobs")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
@@ -345,7 +345,7 @@ class Job
     {
         return $this->created;
     }
-    
+
 
     /**
      * Set Category
