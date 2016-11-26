@@ -30,12 +30,6 @@ h1,h2,h3,h4,h5{
     width: 100%;
     clear: both;
 }
-.fl_r{
-    float: right;
-}
-.fl_l{
-    float: left;
-}
 
 .main_sidebar{
     height: 100vh;
@@ -99,6 +93,7 @@ ul.sidebar_menu li a.logo{
     padding: 20px 15px;
     border-radius: 2px;
     box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+    box-shadow: 0px 3px 5px 0 rgba(174,174,174,0.5);
     box-sizing: border-box;
     margin-bottom: 20px;
     background: #fff;
@@ -156,24 +151,24 @@ ul.sidebar_menu li a.logo{
     padding-bottom: 10px;
 }
 .job .title h3{
-    line-height: 36px;
+    line-height: 22px;
     max-width: 500px;
     display: inline-block;
     white-space: nowrap;
 }
 .job .title .price{
     display: inline-block;
-    background: #6897bb;
-    padding: 10px 15px;
     float: right;
     vertical-align: top;
     font-weight: bold;
-    color: #fff;
+    font-size: 18px;
+    color: #6897bb;
     border-radius: 4px;
     cursor: pointer;
+    margin-right: 40px;
 }
 .job .title .price:hover{
-    background: #38678a;
+    
 }
 .job .description{
     cursor: pointer;
@@ -202,20 +197,62 @@ ul.sidebar_menu li a.logo{
     font-weight: bold;
 }
 .job .tags .tag .icon .fa-bars{line-height: 22px;}
-.button{
+.button, a.button{
     padding: 10px 15px;
     background: #6897bb;
     border: none;
     vertical-align: top;
     color: #fff;
     border-radius: 4px;
+    text-align: center;
 }
-.button:hover{
+.button:hover, a.button:hover{
     cursor: pointer;
     background: #4f7a9b;
+    text-decoration: none;
 }
-.big_button{
+.big_button, a.big_button{
     width: 250px;
     padding: 15px 0px;
     font-size: 18px;
+}
+
+.fl_r{
+    float: right;
+}
+.fl_l{
+    float: left;
+}
+
+.w50{
+    width: 50%;
+}
+
+
+form label{
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    padding-left: 4px;
+}
+form .field{
+    box-sizing: border-box;
+    padding: 7px 10px;
+    font-size: 13px;
+    border-radius: 0px;
+    border: none;
+    margin: 3px 0px 10px 0px;
+    display: block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    box-shadow: 0 1px 0 0 #ddd, 0 0 0 1px #dfdfdf;
+}
+
+form textarea.field{
+    resize: none;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 200px;
 }

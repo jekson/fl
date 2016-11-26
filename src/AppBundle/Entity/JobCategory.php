@@ -182,6 +182,20 @@ class JobCategory
     }
 
 
+    public function countJobsInChildrens(){
+        $children_list = $this->getChildren();
+        //var_dump($children_list[0]->getName());
+        if($children_list->count()){
+            $sum = $this->getJobs()->count();
+            foreach($children_list as $children){
+                $sum += $children->countJobsInChildrens();
+            }
+            return $sum;
+        }else{
+            return $this->getJobs()->count();
+        }
+    }
+
 
     public function getParent() {
         return $this->parent;
@@ -193,7 +207,6 @@ class JobCategory
 
     // always use this to setup a new parent/child relationship
     public function addChildren(\AppBundle\Entity\JobCategory $child) {
-        var_dump($child);
        $this->children[] = $child;
        $child->setParent($this);
     }

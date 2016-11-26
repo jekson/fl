@@ -101,6 +101,12 @@ class Job
     private $pay_type;
 
     /**
+     * @var agreement
+     * @ORM\Column(type="boolean")
+     */
+    private $agreement;
+
+    /**
      * @var category
      * @ORM\ManyToOne(targetEntity="JobCategory")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
@@ -350,7 +356,7 @@ class Job
     /**
      * Set Category
      *
-     * @param inreger $category
+     * @param integer $category
      * @return Job
      */
     public function setCategory($category)
@@ -366,6 +372,29 @@ class Job
      * @return integer
      */
     public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set agreement
+     *
+     * @param boolean $category
+     * @return Job
+     */
+    public function setAgreement($agreement)
+    {
+        $this->agreement = $agreement;
+
+        return $this;
+    }
+
+    /**
+     * Get agreement
+     *
+     * @return boolean
+     */
+    public function getAgreement()
     {
         return $this->category;
     }
