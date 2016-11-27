@@ -97,5 +97,7 @@ class JobType
         return $this->description;
     }
 
-
+    function __toString(){
+        return $this->getName();
+    }
 }

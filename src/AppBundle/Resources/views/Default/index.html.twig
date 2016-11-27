@@ -1,4 +1,20 @@
 {% extends "AppBundle:Default:base.html.twig" %}
+
+{% block header_image %}
+    <div class="header_image">
+        <img src="/site/img/slider_1.png">
+        <div class="overlay"></div>
+    </div>
+{% endblock %}
+
+{% block header %}
+    <div>
+        <a href="{{ url('jobs') }}" class="button fl_l">Найти работу</a>
+        <a href="{{ url('jobCreate') }}" class="button fl_r">Разместить заказ</a>
+        <div class="clearfix"></div>
+    </div>
+{% endblock %}
+
 {% block body %}
     <div id="main">
         <div id="form">

@@ -23,7 +23,7 @@ class User extends BaseUser
 
      /**
      * @var first_name
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(name="fname", type="string", length=200)
      *
      * @Assert\NotBlank(message="Please enter your first name.", groups={"Registration", "Profile"})
      * @Assert\Length(
@@ -38,7 +38,7 @@ class User extends BaseUser
 
      /**
      * @var last_name
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(name="lname", type="string", length=100)
      * @Assert\NotBlank(message="Please enter your last name.", groups={"Registration", "Profile"})
      * @Assert\Length(
      *     min=3,
@@ -58,7 +58,7 @@ class User extends BaseUser
     protected $phone;
 
     /**
-     * @ORM\OneToMany(targetEntity="Job", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Job", mappedBy="user")
      */
     private $jobs;
 

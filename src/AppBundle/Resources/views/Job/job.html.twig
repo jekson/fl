@@ -13,7 +13,51 @@
 {% block body %}
 <div class="content">
     <div class="block job">
-        {{ dump(job.title) }}
+        <div class="title"><h3>{{ job.title }}</h3></div>
+        <hr>
+        <div class="user_item">
+            <a href="#" class="avatar_holder">
+                <img class="avatar" src="http://slto.ru/user_files/avatars/1.png" alt="">
+            </a>
+            <div class="info_holder">
+                <a href="#" class="name">{{ job.user.firstName }} {{ job.user.lastName }}</a>
+                3 дня в сервисе
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="description">
+            {{ job.text }}
+        </div>
+
+        <div class="tags">
+            <span class="tag">
+                <div class="icon"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></div>
+                {{ job.category.name }}
+            </span>
+            <span class="tag">
+                <div class="icon"><i class="fa fa-comment fa-lg" aria-hidden="true"></i></div>
+                0
+            </span>
+            <span class="tag">
+                <div class="icon"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i></div>
+                <abbr class="timeago" title="{{ job.created.date|date("Y-m-d H:i:s") }}"></abbr>
+            </span>
+            {% if job.isOnlyPro %}
+            <span class="tag">
+                <div class="icon"><i class="fa fa-exclamation fa-lg" aria-hidden="true"></i></div>
+                Только для <a href="#"><b>PRO</b></a>
+            </span>
+            {% endif %}
+        </div>
+        {% if app.user %}
+            {% if app.user.id != job.user.id %}
+
+            <hr>
+            <button class="button">Оставить заявку</button>
+
+            {% endif %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

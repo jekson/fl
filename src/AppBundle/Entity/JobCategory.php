@@ -23,7 +23,7 @@ class JobCategory
     /**
      * @var parent
      *
-     * @ORM\ManyToOne(targetEntity="JobCategory")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobCategory", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     private $parent;
@@ -50,12 +50,12 @@ class JobCategory
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="JobCategory", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\JobCategory", mappedBy="parent")
      */
     private $children;
 
     /**
-     * @ORM\OneToMany(targetEntity="Job", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Job", mappedBy="category")
      */
     private $jobs;
 

@@ -9,9 +9,11 @@
 
 {% block body %}
     <div class="content fl_l">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
+        <div class="block">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}
 {% block rightmenu %}

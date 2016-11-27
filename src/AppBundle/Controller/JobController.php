@@ -26,10 +26,14 @@ class JobController extends Controller
         $categoryes = $db->getRepository('AppBundle:JobCategory')->findByParent(null);
 
         $category = $db->getRepository('AppBundle:JobCategory')->findByUrl($category);
-        $jobs = $db->getRepository('AppBundle:Job')->findAll();
+        $jobs = $db->getRepository('AppBundle:Job')->findBy(
+            array('user' => 1),
+            array('created' => 'DESC')
+        );
 
         return $this->render('AppBundle:Job:jobs.html.twig', array(
             'jobs' => $jobs,
+            'category' => $category,
             'categoryes' => $categoryes,
         ));
     }
@@ -55,22 +59,42 @@ class JobController extends Controller
     public function createAction(Request $request)
     {
         $db = $this->getDoctrine()->getManager();
-        $job = new Job;
+        $job = new Job();
 
-        $qc = $db->getRepository('AppBundle:JobCategory')->findByParent(null);
+        //$qc = $db->getRepository('AppBundle:JobCategory')->findByParent(null);
         $cats_lvl1 = array();
         //foreach($qc as $cat){ $cats_lvl1[] = $cat; }
         $form = $this->createFormBuilder($job)
             ->add('title', TextType::class, array('label' => 'Название', 'attr' => array('class' => 'field', 'style' => '')))
+            ->add('price', TextType::class, array('label' => 'Бюджет', 'attr' => array('class' => 'field w50', 'style' => '')))
+            ->add('pay_type', ChoiceType::class, array('label' => false,'choices' => array('В час' => 0, 'В день' => 1, 'В месяц' => 2, 'За проект' => 3) , 'attr' => array('class' => 'field w50', 'style' => '')))
             ->add('text', TextareaType::class, array('label' => 'Опишите ваше задание', 'attr' => array('class' => 'field', 'style' => '')))
-            ->add('type', ChoiceType::class, array('label' => 'Специализация задания','choices' => $qc , 'attr' => array('class' => 'field', 'style' => '')))
+            ->add('category', ChoiceType::class, array('label' => 'Специализация задания','choices' => $cats_lvl1 , 'attr' => array('class' => 'field', 'style' => '')))
             ->add('submit', SubmitType::class, array('label' => 'Опубликовать', 'attr' => array('class' => 'button', 'style' => '')))
             ->getForm();
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            die('ok');
+            
+            $title = $form['title']->getData();
+            $price = $form['price']->getData();
+            $text  = $form['text']->getData();
+            $type  = $form['type']->getData();
+
+            $job->setTitle($title);
+            $job->setPrice($price);
+            $job->setText($text);
+            $job->setType($type);
+
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($job);
+            $em->flush();
+
+            $this->addFlash('notice', 'Job added');
+
+            return $this->redirectToRoute('jobs');
         }
         
         return $this->render('AppBundle:Job:create.html.twig', array(

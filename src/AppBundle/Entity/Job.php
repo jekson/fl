@@ -65,7 +65,7 @@ class Job
     /**
      * @var type
      *
-     * @ORM\ManyToOne(targetEntity="JobType")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobType")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $type;
@@ -108,7 +108,7 @@ class Job
 
     /**
      * @var category
-     * @ORM\ManyToOne(targetEntity="JobCategory")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobCategory", inversedBy="jobs")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
@@ -229,6 +229,28 @@ class Job
         return $this->type;
     }
 
+    /**
+     * Set pay_type
+     *
+     * @param integer $pay_type
+     * @return Job
+     */
+    public function setPayType($pay_type)
+    {
+        $this->pay_type = $pay_type;
+
+        return $this;
+    }
+
+    /**
+     * Get pay_type
+     *
+     * @return integer
+     */
+    public function getPayType()
+    {
+        return $this->pay_type;
+    }
 
     /**
      * Set user
