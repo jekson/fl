@@ -2,7 +2,7 @@
 namespace AdminBundle\Admin;
 
 use AppBundle\Entity\User;
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
-class UserAdmin extends Admin
+class UserAdmin extends AbstractAdmin
 {
 
     /**

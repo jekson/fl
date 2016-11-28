@@ -258,7 +258,7 @@ class Job
      * @param AppBundle\Entity\User $user
      * @return Job
      */
-    public function setUser(AppBundle\Entity\User $user = NULL)
+    public function setUser(\AppBundle\Entity\User $user = NULL)
     {
         $this->user = $user;
         return $this;
