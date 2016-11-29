@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="first_name">
+                <source>First Name</source>
+                <target>Имя</target>
+            </trans-unit>
+            <trans-unit id="last_name">
+                <source>Last Name</source>
+                <target>Фамилия</target>
+            </trans-unit>
+            <trans-unit id="e_mail">
+                <source>e-mail</source>
+                <target>E-mail</target>
+            </trans-unit>
+            <trans-unit id="email">
+                <source>Email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="users">
+                <source>Users</source>
+                <target>Пользователи</target>
+            </trans-unit>
+            <trans-unit id="jobs">
+                <source>Jobs</source>
+                <target>Работы</target>
+            </trans-unit>
+            <trans-unit id="jobtypes">
+                <source>JobTypes</source>
+                <target>Типы работ</target>
+            </trans-unit>
+            <trans-unit id="jobcategories">
+                <source>JobCategories</source>
+                <target>Категории работ</target>
+            </trans-unit>
+            <trans-unit id="user_list">
+                <source>User List</source>
+                <target>Список пользователей</target>
+            </trans-unit>
+            <trans-unit id="Action">
+                <source>Action</source>
+                <target>Действия</target>
+            </trans-unit>
+            <trans-unit id="ID">
+                <source>ID</source>
+                <target>ID</target>
+            </trans-unit>            
+            <trans-unit id="title">
+                <source>Title</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="job_list">
+                <source>Job List</source>
+                <target>Список работ</target>
+            </trans-unit>
+            
+        </body>
+    </file>
+</xliff>

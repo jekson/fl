@@ -214,4 +214,17 @@ class JobCategory
     public function setParent(\AppBundle\Entity\JobCategory $parent) {
        $this->parent = $parent;
     }
+
+    public function __toString(){
+        $parent = $this->getParent();
+
+        if (!empty($parent)){
+            if ($parent->getId() == $this->getId()){
+                return $this->getName() . ' self parent';
+            }
+            return $this->getParent() . ' - ' . $this->getName();
+        } else {
+            return $this->getName();
+        }
+    }
 }

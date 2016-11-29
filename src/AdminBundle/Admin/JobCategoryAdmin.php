@@ -1,8 +1,7 @@
 <?php
 namespace AdminBundle\Admin;
 
-use AppBundle\Entity\Job;
-use AppBundle\Entity\User;
+use AppBundle\Entity\JobCategory;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -13,9 +12,14 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
-class JobAdmin extends AbstractAdmin
+class JobCategoryAdmin extends AbstractAdmin
 {
 
+    /**
+     * @param string $name
+     * @param null $object
+     * @return bool
+     */
 
     /**
      * @param FormMapper $formMapper
@@ -24,26 +28,20 @@ class JobAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('General')
-                ->add('title', 'text', array(
-                    'label' => 'Title'
+                ->add('name', 'text', array(
+                    'label' => 'name'
                 ))
-                ->add('user', 'sonata_type_model', array(
-                    'label' => 'User',
-                    'class' => 'AppBundle\Entity\User',
-                    'btn_add' => false
+                 ->add('parent', 'sonata_type_model', array(
+                    'label' => 'Parent',
+                    'class' => 'AppBundle\Entity\JobCategory',
+                    'required' => false,
+                    'btn_add' => false,
                 ))
-                ->add('type', 'sonata_type_model', array(
-                    'label' => 'Type',
-                    'btn_add' => false
+                ->add('url', 'text', array(
+                    'label' => 'Url'
                 ))
-                ->add('price', 'money', array(
-                    'label' => 'Price'
-                ))
-                ->add('Text', 'textarea', array(
-                    'label' => 'Text'
-                ))
-                ->add('onlyPro', 'checkbox', array(
-                    'label' => 'Only pro'
+                ->add('description', 'textarea', array(
+                    'label' => 'Description'
                 ))
             ->end()
         ;
@@ -54,7 +52,7 @@ class JobAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title')
+            ->add('name')
         ;
     }
     /**
@@ -66,8 +64,14 @@ class JobAdmin extends AbstractAdmin
             ->addIdentifier('id', null, array(
                 'label' => 'ID'
             ))
-            ->add('title', null, array(
-                'label' => 'Title'
+            ->add('name', null, array(
+                'label' => 'Name'
+            ))
+            ->add('url', null, array(
+                'label' => 'Url'
+            ))
+            ->add('parent', null, array(
+                'label' => 'Parent'
             ))
             ->add('_action', 'actions', array(
                 'actions' => array(
