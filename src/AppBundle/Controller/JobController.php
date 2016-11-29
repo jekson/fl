@@ -3,15 +3,13 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Job;
+use AppBundle\Form\JobType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class JobController extends Controller
 {
@@ -61,17 +59,7 @@ class JobController extends Controller
         $db = $this->getDoctrine()->getManager();
         $job = new Job();
 
-        //$qc = $db->getRepository('AppBundle:JobCategory')->findByParent(null);
-        $cats_lvl1 = array();
-        //foreach($qc as $cat){ $cats_lvl1[] = $cat; }
-        $form = $this->createFormBuilder($job)
-            ->add('title', TextType::class, array('label' => 'Название', 'attr' => array('class' => 'field', 'style' => '')))
-            ->add('price', TextType::class, array('label' => 'Бюджет', 'attr' => array('class' => 'field w50', 'style' => '')))
-            ->add('pay_type', ChoiceType::class, array('label' => false,'choices' => array('В час' => 0, 'В день' => 1, 'В месяц' => 2, 'За проект' => 3) , 'attr' => array('class' => 'field w50', 'style' => '')))
-            ->add('text', TextareaType::class, array('label' => 'Опишите ваше задание', 'attr' => array('class' => 'field', 'style' => '')))
-            ->add('category', ChoiceType::class, array('label' => 'Специализация задания','choices' => $cats_lvl1 , 'attr' => array('class' => 'field', 'style' => '')))
-            ->add('submit', SubmitType::class, array('label' => 'Опубликовать', 'attr' => array('class' => 'button', 'style' => '')))
-            ->getForm();
+        $form = $this->createForm(JobType::class, $job);
 
         $form->handleRequest($request);
 
