@@ -9,6 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\Debug\Debug;
+
+Debug::enable();
+
 
 
 class JobController extends Controller
@@ -52,12 +56,15 @@ class JobController extends Controller
     }
 
     /**
-     * @Route("/job/create", name="jobCreate")
+     * @Route("/job/create/{type}", requirements={"type" = "\d+"}, name="jobCreate", defaults={"type" = "1"})
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $jobTypeId = 1)
     {
         $db = $this->getDoctrine()->getManager();
+        $jobType = $db->getRepository('AppBundle:JobType')->find($jobTypeId);
+
         $job = new Job();
+        $job->setType($jobType);
 
         $form = $this->createForm(JobType::class, $job);
 
@@ -65,20 +72,10 @@ class JobController extends Controller
 
         if($form->isSubmitted() && $form->isValid()){
             
-            $title = $form['title']->getData();
-            $price = $form['price']->getData();
-            $text  = $form['text']->getData();
-            $type  = $form['type']->getData();
+            $db->persist($job);
+            $db->flush();
 
-            $job->setTitle($title);
-            $job->setPrice($price);
-            $job->setText($text);
-            $job->setType($type);
-
-            $em = $this->getDoctrine()->getManager();
-
-            $em->persist($job);
-            $em->flush();
+            
 
             $this->addFlash('notice', 'Job added');
 

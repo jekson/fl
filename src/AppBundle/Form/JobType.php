@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 class JobType extends AbstractType
@@ -41,6 +42,7 @@ class JobType extends AbstractType
             'label' => 'Опубликовать',
             'attr' => array('class' => 'button'))
         );
+        $builder->add('type', HiddenType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
