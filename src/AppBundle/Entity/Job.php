@@ -359,7 +359,7 @@ class Job
      */
     public function setCreated()
     {
-        $this->created = new DateTime('now');
+        $this->created = new \DateTime('now');
 
         return $this;
     }
