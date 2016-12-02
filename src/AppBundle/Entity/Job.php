@@ -31,9 +31,9 @@ class Job
 
     /**
      * @var executor_id
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullabel=true)
      */
-    private $executor;
+    private $executor = null;
 
      /**
      * @var title

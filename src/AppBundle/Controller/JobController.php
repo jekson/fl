@@ -71,11 +71,10 @@ class JobController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            
+
+            $job->setType($jobType);
             $db->persist($job);
             $db->flush();
-
-            
 
             $this->addFlash('notice', 'Job added');
 

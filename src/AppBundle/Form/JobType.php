@@ -42,7 +42,7 @@ class JobType extends AbstractType
             'label' => 'Опубликовать',
             'attr' => array('class' => 'button'))
         );
-        $builder->add('type', HiddenType::class);
+        //$builder->add('type', HiddenType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
