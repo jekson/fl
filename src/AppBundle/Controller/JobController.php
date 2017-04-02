@@ -3,15 +3,17 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Job;
+use AppBundle\Form\JobType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Debug\Debug;
+
+Debug::enable();
+
+
 
 class JobController extends Controller
 {
@@ -54,43 +56,25 @@ class JobController extends Controller
     }
 
     /**
-     * @Route("/job/create", name="jobCreate")
+     * @Route("/job/create/{type}", requirements={"type" = "\d+"}, name="jobCreate", defaults={"type" = "1"})
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $jobTypeId = 1)
     {
         $db = $this->getDoctrine()->getManager();
-        $job = new Job();
+        $jobType = $db->getRepository('AppBundle:JobType')->find($jobTypeId);
 
-        //$qc = $db->getRepository('AppBundle:JobCategory')->findByParent(null);
-        $cats_lvl1 = array();
-        //foreach($qc as $cat){ $cats_lvl1[] = $cat; }
-        $form = $this->createFormBuilder($job)
-            ->add('title', TextType::class, array('label' => 'Название', 'attr' => array('class' => 'field', 'style' => '')))
-            ->add('price', TextType::class, array('label' => 'Бюджет', 'attr' => array('class' => 'field w50', 'style' => '')))
-            ->add('pay_type', ChoiceType::class, array('label' => false,'choices' => array('В час' => 0, 'В день' => 1, 'В месяц' => 2, 'За проект' => 3) , 'attr' => array('class' => 'field w50', 'style' => '')))
-            ->add('text', TextareaType::class, array('label' => 'Опишите ваше задание', 'attr' => array('class' => 'field', 'style' => '')))
-            ->add('category', ChoiceType::class, array('label' => 'Специализация задания','choices' => $cats_lvl1 , 'attr' => array('class' => 'field', 'style' => '')))
-            ->add('submit', SubmitType::class, array('label' => 'Опубликовать', 'attr' => array('class' => 'button', 'style' => '')))
-            ->getForm();
+        $job = new Job();
+        $job->setType($jobType);
+
+        $form = $this->createForm(JobType::class, $job);
 
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            
-            $title = $form['title']->getData();
-            $price = $form['price']->getData();
-            $text  = $form['text']->getData();
-            $type  = $form['type']->getData();
 
-            $job->setTitle($title);
-            $job->setPrice($price);
-            $job->setText($text);
-            $job->setType($type);
-
-            $em = $this->getDoctrine()->getManager();
-
-            $em->persist($job);
-            $em->flush();
+            $job->setType($jobType);
+            $db->persist($job);
+            $db->flush();
 
             $this->addFlash('notice', 'Job added');
 
